@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <Tab></Tab>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Vue from 'vue'
+import { Tabbar, TabItem } from 'mint-ui';
+
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
+
+import Tab from './components/Tab'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Tab
   }
 }
 </script>
@@ -23,6 +31,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
 }
 </style>
