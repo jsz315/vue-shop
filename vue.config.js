@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const DLLReferencePlugin = require('webpack/lib/DllReferencePlugin')
 const mock = require('./mock.js')
 module.exports = {
     devServer:{
@@ -30,6 +31,10 @@ module.exports = {
                   removeAttributeQuotes: true
                 }
             }),
+            new DLLReferencePlugin({
+                context: process.cwd(),
+                manifest: require('./public/dll/common.manifest.json')
+            })
         ]
     }
 }
